@@ -350,6 +350,13 @@ const nodeData = [
 
   const img = new Image();
   img.src = data.img;
+   img.loaded = false;
+img.onerror = () => {
+  console.error("Imagen no encontrada:", data.img);
+};
+img.onload = () => {
+  img.loaded = true;
+};
 
   return {
     x: RADIUS * Math.cos(theta) * Math.sin(phi),
@@ -441,6 +448,7 @@ function draw() {
     ctx.beginPath();
     ctx.arc(p.x, p.y, size, 0, Math.PI * 2);
     ctx.clip();
+    if (!n.img.loaded) return;
     ctx.drawImage(n.img, p.x - size, p.y - size, size * 2, size * 2);
     ctx.restore();
 
