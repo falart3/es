@@ -107,6 +107,8 @@ const nodeData = [
 
   const img = new Image();
   img.src = data.img;
+   img.loaded = false;
+img.onload = () => img.loaded = true;
 
   return {
     x: RADIUS * Math.cos(theta) * Math.sin(phi),
@@ -145,10 +147,6 @@ function rotateY(n, a) {
 
 /* ================= DIBUJO ================= */
 function draw() {
-    // Inicializamos la rotación automática como 0
-    let autoRotX = 0;
-    let autoRotY = 0;
-
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   // Aplica rotación automática
@@ -164,9 +162,7 @@ function draw() {
     // Fricción solo sobre la rotación manual
   velX *= 0.98;
   velY *= 0.98;;
-  autoRotX *= 1.85; // fricción más lenta para rotación automática
-  autoRotY *= 1.85;
-
+ 
   
   if (selectedNode) {
   drawInfoPanel(selectedNode);
@@ -188,6 +184,7 @@ function draw() {
 
   // NODOS
   nodes.forEach(n => {
+    if (!n.img.loaded) return;
     const p = project(n);
     n.sx = p.x;
     n.sy = p.y;
@@ -308,27 +305,5 @@ const canvasRect = canvas.getBoundingClientRect();
   // 🧵 HILO
 drawThread(node, anchorX, anchorY); 
 
-  // 📦 PANEL
- /*
-  ctx.save();
-  ctx.fillStyle = "rgba(10,10,10,0.55)";
-  ctx.strokeStyle = "rgba(0,255,255,0.4)";
-  ctx.lineWidth = 1.5;
-
-  ctx.beginPath();
-  ctx.roundRect(panelX, panelY, panelW, panelH, 16);
-  ctx.fill();
-  ctx.stroke();
-
-  // 📝 TEXTO
-  ctx.fillStyle = "#fff";
-  ctx.font = "bold 14px sans-serif";
-  ctx.fillText(node.data.text, panelX + 16, panelY + 32);
-
-  ctx.font = "13px sans-serif";
-  ctx.fillText("Click para abrir enlace", panelX + 16, panelY + 60);
-
-  ctx.restore();
-  */
 }
 
