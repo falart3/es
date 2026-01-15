@@ -1,0 +1,118 @@
+/* RESET básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ================= GENERAL ================= */
+body {
+  font-family: Arial, sans-serif;
+  color: #fff;
+
+    /* ===== IMAGEN DE FONDO GLOBAL ===== */
+  background-image: url("fondo01.jpg"); /* ← TU imagen */
+  background-size: cover;        /* Cubre toda la pantalla */
+  background-position: center;   /* Centrada */
+  background-repeat: no-repeat;  /* No repetir */
+  /*background-attachment: fixed;  /* Efecto "parallax" suave */
+
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+
+/* ================= HEADER ================= */
+.header {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  height: 120px; /* ← CAMBIÁ ACÁ la altura del header */
+  align-items: center;
+}
+
+.header-col {
+  padding: 10px;
+}
+
+.header img {
+  max-height: 80px; /* ← foto gif derecha del header */
+}
+
+.logo {
+  max-width: 200px; /* ← tamaño logo izquierdo*/
+  justify-content: center; /* centra horizontalmente */
+  align-items: center;     /* centra verticalmente */
+
+}
+
+.center {
+  text-align: center;
+}
+
+.right {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
+
+.right img {
+  max-width: 100%;
+}
+
+/* ================= MAIN ================= */
+.main {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  height: calc(100vh - 120px);
+}
+
+/* Canvas + panel */
+.canvas-container {
+  position: relative;
+  
+}
+
+#sphereCanvas {
+  width: 100%;
+  height: 100%;
+}
+
+/* Panel textual */
+#infoPanel {
+  position: absolute;
+  top: 120px;
+  left: 20px;
+  width: 260px; /* ← ancho panel */
+  background: rgba(20,20,20,0.6);
+  padding: 15px;
+  border: 2px solid rgba(0, 255, 255, 0.4); /* borde cyan semitransparente */
+  border-radius: 12px; /* ← esquinas redondeadas */
+  max-height: 70%;  /* ← alto máximo */
+  overflow-y: auto; /* scroll interno */
+}
+
+#infoPanel a {
+  color: cyan;
+  text-decoration: none;
+}
+
+/* Sidebar */
+.sidebar {
+  padding: 15px;
+
+    z-index: 10; /* encima del canvas */
+}
+
+.sidebar a {
+  color: #aaa;
+  text-decoration: none;
+}
+
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .main {
+    grid-template-columns: 1fr;
+  }
+}

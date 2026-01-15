@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+
+  <!-- CLAVE para responsive -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Esfera de Nodos</title>
+
+  <!-- CSS externo -->
+  <link rel="stylesheet" href="esfera.css">
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="header">
+
+  <!-- Columna izquierda (1/4) -->
+  <div class="header-col left">
+    <img src="legos.png" alt="Logo" class="logo">
+  </div>
+
+  <!-- Columna centro (2/4) -->
+  <div class="header-col center">
+    <h1>BUILDER AND DEVELOPER OF IDEAS</h1>
+  </div>
+
+  <!-- Columna derecha (1/4, 2 filas) -->
+  <div class="header-col right">
+    <div class="right-top">
+      <img src="fotito.gif" alt="Animación">
+    </div>
+    <div class="right-bottom">
+      <!-- Ejemplo de script simple -->
+
+         <!-- aquí lo el codigo embebido --> 
+      <script>
+    /**Autotype */
+var TxtType = function(el, toRotate, period) {
+    this.toRotate = toRotate;
+    this.el = el;
+    this.loopNum = 0;
+    this.period = parseInt(period, 10) || 2000;
+    this.txt = "";
+    this.tick();
+    this.isDeleting = false;
+  };
+  
+  TxtType.prototype.tick = function() {
+    var i = this.loopNum % this.toRotate.length;
+    var fullTxt = this.toRotate[i];
+  
+    if (this.isDeleting) {
+      this.txt = fullTxt.substring(0, this.txt.length - 1);
+    } else {
+      this.txt = fullTxt.substring(0, this.txt.length + 1);
+    }
+  
+    this.el.innerHTML = '<span class="wrap">' + this.txt + "<\/span>";
+  
+    var that = this;
+    var delta = 200 - Math.random() * 100;
+  
+    if (this.isDeleting) {
+      delta /= 3;
+    }
+  
+    if (!this.isDeleting && this.txt === fullTxt) {
+      delta = this.period;
+      this.isDeleting = true;
+    } else if (this.isDeleting && this.txt === "") {
+      this.isDeleting = false;
+      this.loopNum++;
+      delta = 500;
+    }
+  
+    setTimeout(function() {
+      that.tick();
+    }, delta);
+  };
+  
+  window.onload = function() {
+    var elements = document.getElementsByClassName("typewrite");
+    for (var i = 0; i < elements.length; i++) {
+      var toRotate = elements[i].getAttribute("data-type");
+      var period = elements[i].getAttribute("data-period");
+      if (toRotate) {
+        new TxtType(elements[i], JSON.parse(toRotate), period);
+      }
+    }
+    // INJECT CSS
+    var css = document.createElement("style");
+    css.type = "text/css";
+    css.innerHTML = ".typewrite > .wrap { font-size:20px; border-right: 0.08em solid #2bbc8a;}";
+    document.body.appendChild(css);
+  };
+    
+</script>
+
+     
+<a style="color:rgba(255, 255, 255, 1.5); font-size:10px; font-family: 'Arial', sans-serif" class="typewrite" data-period="1000" data-type="[ &quot;Hello World!&nbsp;&quot;, &quot;my name is Francisco&nbsp;&quot;, &quot;and&nbsp;&quot;, &quot;im always learning&nbsp;&quot;, &quot;and I have always offered my services&nbsp;&quot;, &quot;to solve different aspects&nbsp;&quot;, &quot;You probably already have&nbsp;&quot;, &quot;your own network of contacts,&nbsp;&quot;, &quot;but interconnection&nbsp;&quot;, &quot;is always a&nbsp;&quot;, &quot;good thing.!&nbsp;&quot;, &quot;I hope you can find what you are looking for&nbsp;&quot;,&quot;and thanks for watching&nbsp;&quot;, &quot;falart3.42web.io&nbsp;&quot;, &quot;ᒡ◯ᵔ◯ᒢ&nbsp;&quot;, &quot;... ;)&nbsp;&quot;]"><span class="wrap"></span></a>
+        
+      <span id="clock"></span>
+    </div>
+  </div>
+
+</header>
+
+<!-- ================= MAIN ================= -->
+<main class="main">
+
+  <!-- Panel textual izquierdo (3/4) -->
+  <section class="canvas-container">
+
+    <!-- Panel de información -->
+    <aside id="infoPanel">
+      <h2 id="infoTitle">Nodo</h2>
+      <p id="infoText">Selecciona un nodo.</p>
+      <a id="infoLink" href="#" target="_blank">Ir al enlace</a>
+    </aside>
+
+    <!-- Canvas -->
+    <canvas id="sphereCanvas"></canvas>
+
+  </section>
+
+  <!-- Columna derecha (1/4) -->
+  <aside class="sidebar">
+      
+    <ul>
+        <!-- UI encima del canvas -->
+        <div id="histats_counter">
+
+        </div>
+                
+      <li><a href="#">Enlace 1</a></li>
+      <li><a href="#">Enlace 2</a></li>
+        
+      <a href="#"><div id="cc-m-7779832651" class="j-module n j-htmlCode "><!-- Elfsight AI Chatbot | Untitled AI Chatbot -->
+<script src="https://elfsightcdn.com/platform.js" async="async"></script>
+<div class="elfsight-app-4324eccc-a774-42b7-bb41-e7e365d7d6df" data-elfsight-app-lazy="">
+</div></div></a>
+
+        
+    </ul>
+  </aside>
+
+</main>
+
+<!-- JS -->
+<script src="esfera2.js"></script>
+
+</body>
+</html>
