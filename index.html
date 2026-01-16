@@ -241,11 +241,6 @@ var TxtType = function(el, toRotate, period) {
 
 <!-- ================= JS EMBEBIDO ================= -->
 <script>
-//contar imegenes
-let imagesLoaded = 0;
-const totalImages = nodesData.length;
-
-  
 // ROTACIÓN AUTOMÁTICA (siempre activa)
 let autoRotX = 0.002;
 let autoRotY = 0.003;
@@ -355,17 +350,8 @@ const nodeData = [
 
   const img = new Image();
   img.src = data.img;
-   img.loaded = false;
 
-  if (imagesLoaded === totalImages) {
-    start();
-  }
-};
-
-img.onerror = () => {
-  console.error("❌ Imagen no encontrada:", data.img);
-imagesLoaded++;
-  }; 
+   if (!n.img.loaded) return;
 
 img.onload = () => {
   img.loaded = true;
@@ -380,9 +366,6 @@ img.onload = () => {
   };
 });
   
-function start() {
-  requestAnimationFrame(draw);
-}
 /* ================= PROYECCIÓN ================= */
 function project(n) {
   const scale = DEPTH / (DEPTH + n.z);
@@ -477,7 +460,7 @@ function draw() {
 
   requestAnimationFrame(draw);
 }
-draw();
+
 
 /* ================= INTERACCIÓN ================= */
 canvas.addEventListener("mousedown", e => {
@@ -577,6 +560,11 @@ drawThread(node, anchorX, anchorY);
 
 
 }
+
+  window.addEventListener("load", () => {
+  resize();
+  requestAnimationFrame(draw);
+});
 
 
 </script>
