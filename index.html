@@ -241,6 +241,11 @@ var TxtType = function(el, toRotate, period) {
 
 <!-- ================= JS EMBEBIDO ================= -->
 <script>
+//contar imegenes
+let imagesLoaded = 0;
+const totalImages = nodesData.length;
+
+  
 // ROTACIÓN AUTOMÁTICA (siempre activa)
 let autoRotX = 0.002;
 let autoRotY = 0.003;
@@ -351,9 +356,17 @@ const nodeData = [
   const img = new Image();
   img.src = data.img;
    img.loaded = false;
-img.onerror = () => {
-  console.error("Imagen no encontrada:", data.img);
+
+  if (imagesLoaded === totalImages) {
+    start();
+  }
 };
+
+img.onerror = () => {
+  console.error("❌ Imagen no encontrada:", data.img);
+imagesLoaded++;
+  }; 
+
 img.onload = () => {
   img.loaded = true;
 };
@@ -366,7 +379,10 @@ img.onload = () => {
     data
   };
 });
-
+  
+function start() {
+  requestAnimationFrame(draw);
+}
 /* ================= PROYECCIÓN ================= */
 function project(n) {
   const scale = DEPTH / (DEPTH + n.z);
