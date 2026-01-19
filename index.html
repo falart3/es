@@ -227,9 +227,7 @@
       <img src="fotito.gif" alt="Animación">
     </div>
     <div class="right-bottom">
-      <!-- Ejemplo de script simple -->
-
-         <!-- aquí lo el codigo embebido --> 
+ 
       <script>
     /**Autotype */
 var TxtType = function(el, toRotate, period) {
@@ -693,14 +691,14 @@ const canvasRect = canvas.getBoundingClientRect();
   const panelW = 260;
   const panelH = 180;
     
-// 👉 centro del lado derecho del panel
+// centro del lado derecho del panel
  // const anchorX = panelX + panelW;
     const anchorX = rect.right - canvasRect.left;
  // const anchorY = panelY + panelH;
     const anchorY = rect.top - canvasRect.top + rect.height / 2;
 
 
-  // 🧵 HILO
+  // HILO
 drawThread(node, anchorX, anchorY); 
 
 
@@ -709,7 +707,7 @@ drawThread(node, anchorX, anchorY);
 
 function updateRadius() {
   if (window.innerWidth < 768) {
-    RADIUS = Math.min(window.innerWidth, window.innerHeight) * 0.28;
+    RADIUS = Math.min(window.innerWidth, window.innerHeight) * 0.028;
   } else {
     RADIUS = 220;
   }
